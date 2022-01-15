@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import clienteAxios from '../../config/axios';
 
 const Login = () => {
-
+   
     // State para el inicio de sesion
     const [cliente, guardarCliente] = useState({
         correo: '',
@@ -25,8 +26,29 @@ const Login = () => {
         e.preventDefault();
 
         // Validar que no haya campos vacios
-
-        // Pasarlo a la acción
+        if ( correo === '')
+            alert("Debes escribir un correo válido");
+        else if ( clave.length < 6 )
+            alert("La contraseña debe ser de almenos 6 caracteres");
+        else{
+            const validarCliente = async datos => {
+                try{
+                    const respuesta = await clienteAxios.post('/api/auth', { "correo": correo, "clave": clave });
+                    const datos = await respuesta.data;
+                    console.log(datos);
+                    //return datos;
+                }catch (error){
+                    console.log(error);
+                }
+            }
+            const respuesta = validarCliente();
+            if (respuesta.token !== null){
+                window.location.href = "/productos";
+            }else
+                alert(respuesta.msg);
+          
+        }
+        
     }
 
     return (

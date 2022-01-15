@@ -1,10 +1,11 @@
 import { 
     REGISTRO_EXITOSO,
     REGISTRO_ERROR,
-    OBTENER_USUARIO,
+    LOGIN_ERROR
+   /*  OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION
+    CERRAR_SESION */
 } from '../../types/index';
 
 export default (state, action) => {
@@ -16,7 +17,10 @@ export default (state, action) => {
                 autenticado: true,
                 mensaje: null
             }
+        
+        case LOGIN_ERROR:
         case REGISTRO_ERROR:
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,

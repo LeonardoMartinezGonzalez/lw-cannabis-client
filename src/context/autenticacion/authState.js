@@ -8,10 +8,11 @@ import clienteAxios from '../../config/axios';
 import { 
     REGISTRO_EXITOSO,
     REGISTRO_ERROR,
-    OBTENER_USUARIO,
+    LOGIN_ERROR
+    /* OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION
+    CERRAR_SESION */
 } from '../../types';
 
 const AuthState = props => {
@@ -33,7 +34,10 @@ const AuthState = props => {
             dispatch({
                 type: REGISTRO_EXITOSO,
                 payload: respuesta.data 
-            })
+            });
+
+            // Obtener el usuario
+            usuarioAutenticado();
 
         }catch (error) {
             //console.log(error.response.data.msg);
@@ -46,6 +50,32 @@ const AuthState = props => {
                 type: REGISTRO_ERROR,
                 payload: alerta
             })
+        }
+    }
+
+    // Regresa el usuario autenticado
+    const usuarioAutenticado = async () => {
+        const token = localStorage.getItem('token');
+        if (token){
+            // Función para enviar el token por headers
+        }
+        try{
+            const respuesta = await clienteAxios.get('/api/auth');
+            console.log(respuesta.data);
+        }catch (error){
+            console.log(error.response);
+            dispatch({
+                type: LOGIN_ERROR
+            })
+        }
+    }
+
+    // Cuando el usuario inicia sesion
+    const iniciarSesion = async datos => {
+        try {
+            
+        } catch (error) {
+            console.log(error);
         }
     }
 

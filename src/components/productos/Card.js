@@ -16,7 +16,8 @@ function Card({ item }) {
             <img src={item.productoImagen} className='img-producto' alt="" />{/*  */} 
             <h4> {item.productoNombreCorto} </h4>
             <p> {formatoMoneda(item.productoCosto)}</p>
-            <a href="#" className="boton">Comprar</a>
+            {/* <a href="#" className="boton">Comprar</a> */}
+            <button className="boton">Comprar</button> {/* key={index} onClick={() => seleccionarCategoria(cat)} variant="primary" */}
         </div>
     )
 }

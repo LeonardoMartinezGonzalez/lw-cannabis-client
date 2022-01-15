@@ -17,8 +17,8 @@ const CrearCuenta = (props) => {
         console.log("Autenticado: " + autenticado);
         if (autenticado){
             //props.history.push('/productos');
-            alert("Felicidades, se ha creado la cuenta");
-            window.location.href = "/iniciar-sesion";
+            //alert("Felicidades, se ha creado la cuenta");
+            window.location.href = "/";
         }
 
         if (mensaje){
@@ -35,7 +35,7 @@ const CrearCuenta = (props) => {
         confirmar: ''
     });
     const onChangeCrearCuenta = (e) => {
-        console.log('Dentro de onChange');
+        
         guardarCliente( {
             ...cliente, // Se toma una copia de lo que tiene cliente para que NO se reescriba lo que ya está
             [e.target.name] : e.target.value // y se sobreescribe la actual

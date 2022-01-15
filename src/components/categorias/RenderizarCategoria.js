@@ -1,13 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+/* import { Link } from 'react-router-dom'; */
 
 const RenderizarCategoria = ({ categoria }) => {
     //console.log(categoria);
 
-    const mostrarProductos = (idCategoria) => {
-        //console.log(idCategoria);
-
-    }
     return (
         <div className='formato-categoria'>
             {/* <Link to={'/productos'} className="enlace-cuenta-blanco mayusculas-logo"> */}

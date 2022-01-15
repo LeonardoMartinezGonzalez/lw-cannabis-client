@@ -16,9 +16,9 @@ function App() {
       <AuthState>
         <Router>
           <Routes>
-            <Route  path="/iniciar-sesion" element = {<Login/>} />
+            <Route  path="/" element = {<Login/>} />
             <Route  path="/crear-cuenta" element = {<CrearCuenta/>} />
-            <Route  path="/" element = {<Productos/>} />
+            <Route  path="/productos" element = {<Productos/>} />
             <Route  path="/ver-carrito" element = {<VerCarrito/>} />
           </Routes> 
         </Router>

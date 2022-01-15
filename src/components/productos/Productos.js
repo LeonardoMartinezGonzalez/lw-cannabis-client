@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react'; /* /cjs/react.development */
 import clienteAxios from '../../config/axios';
 
 import Encabezado from '../layout/Encabezado';
@@ -8,7 +8,7 @@ import Card from './Card';
 
 const Productos = () => {
     console.log('Desde Productos');
-    const [categoria_seleccionada, seleccionarCategoria] = useState(null);
+    const [categoria_seleccionada, seleccionarCategoria] = useState(0); //null
     const [productos, setProductos] = useState([])
 
     React.useEffect(() => {
@@ -41,8 +41,8 @@ const Productos = () => {
                 categoria_seleccionada && (
                     <>
                         <div className='d-flex contenedor-productos'>
-                            {productos.map(element => (
-                                <Card item={element} />
+                            {productos.map((element,i) => (
+                                <Card item={element} key={i} />
                             ))}
                         </div>
                     </>
